@@ -14,12 +14,12 @@ export default function Navbar() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link href="/">
-                <a className="nav-link" aria-current="page" >Home</a>
+                <a className="nav-link" aria-current="page" title='Go to home page'>Home</a>
               </Link>
             </li>
             <li className="nav-item">
               <Link href="/conversations">
-                <a className="nav-link" href="#">Conversations</a>
+                <a className="nav-link"  title='Go to conversations page'>Conversations</a>
               </Link>
             </li>
           </ul>

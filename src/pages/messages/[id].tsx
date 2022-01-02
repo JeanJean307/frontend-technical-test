@@ -37,7 +37,7 @@ function Messages({ conversationId, data }: InferGetServerSidePropsType<typeof g
             const res = fetch(`http://localhost:3005/messages/${conversationId}`,
                 {
                     method: "POST",
-                    body:  JSON.stringify({ body: inputMessage, timestamp: message.timestamp })
+                    body: JSON.stringify({ body: inputMessage, timestamp: message.timestamp })
                 });
             setMessages((prev) => [...prev, message]);
             setInputMessage("");
@@ -87,7 +87,7 @@ function Messages({ conversationId, data }: InferGetServerSidePropsType<typeof g
             </div>
             <div className="card-footer text-muted d-flex justify-content-start align-items-center p-3">
                 <input type="text" className="form-control form-control-lg"
-                    placeholder="Type message"
+                    placeholder="Type message" aria-label="Type new message"
                     value={inputMessage}
                     onChange={(e) => setInputMessage(e.target.value)}
                     onKeyUp={onEnter} />
