@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { getLoggedUserId } from '../utils/getLoggedUserId'
 
 export default function Navbar() {
   return (
@@ -23,8 +24,8 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        <div>
-          <Image src={`/avatars/${1}.png`} alt="Conversations avatar" width={25} height={25} />
+        <div className='d-flex align-items-center'>
+          <Image src={`/avatars/${getLoggedUserId()}.png`} alt="Conversations avatar" width={25} height={25} />
           Thibault
         </div>
       </div>

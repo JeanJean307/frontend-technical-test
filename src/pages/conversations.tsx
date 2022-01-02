@@ -3,31 +3,34 @@ import { InferGetServerSidePropsType } from 'next'
 import { Conversation } from '../types/conversation'
 import { tsToDate } from '../utils/timestamp'
 import Image from 'next/image'
+import { getLoggedUserId } from '../utils/getLoggedUserId'
+import NewConversation from '../components/newConversation'
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`http://localhost:3005/conversations/1`)
-  const data: Conversation[] = await res.json()
+  const res = await fetch(`http://localhost:3005/conversations/${getLoggedUserId()}`)
+  const conversations: Conversation[] = await res.json()
 
   return {
     props: {
-      data,
+      conversations,
     },
   }
 }
 
-function Conversations({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+function Conversations({ conversations }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
 
-    <div className="card"  style={{ position: "relative", height: "400px", width: "300px" }}>
+    <div className="card" style={{ position: "relative", height: "400px", width: "300px" }}>
       <div className="card-header d-flex justify-content-between align-items-center p-3">
         <h5 className="mb-0">Conversations</h5>
       </div>
       <div className="card-body overflow-auto">
+        <NewConversation existingUserId={conversations.map(c => c.recipientId === getLoggedUserId() ? c.senderId : c.recipientId )} />
         <ul className="list-unstyled mb-0">
-          {data.map((c) => {
+          {conversations.map((c) => {
             let messagePath = `messages/${c.id}`;
-            let name = c.recipientId === 1 ? c.senderNickname : c.recipientNickname;
-            let id = c.recipientId === 1 ? c.senderId : c.recipientId;
+            let name = c.recipientId === getLoggedUserId() ? c.senderNickname : c.recipientNickname;
+            let id = c.recipientId === getLoggedUserId() ? c.senderId : c.recipientId;
             return (
               <li key={c.id} className="p-2 border-bottom">
                 <Link href={messagePath}>

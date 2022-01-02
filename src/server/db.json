@@ -75,6 +75,26 @@
       "id": 4,
       "nickname": "Elodie",
       "token": "xxxx"
+    },
+    {
+      "id": 5,
+      "nickname": "Jean-François",
+      "token": "xxxx"
+    },
+    {
+      "id": 6,
+      "nickname": "Emmy",
+      "token": "xxxx"
+    },
+    {
+      "id": 7,
+      "nickname": "Enjy",
+      "token": "xxxx"
+    },
+    {
+      "id": 8,
+      "nickname": "Tim",
+      "token": "xxxx"
     }
   ]
 }

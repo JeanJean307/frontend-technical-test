@@ -17,7 +17,7 @@ export const getServerSideProps = async ({ params }) => {
 
 function Messages({ conversationId, data }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 
-    const [messages, setMessages] = useState(data as Message[]);
+    const [messages, setMessages] = useState<Message[]>(data);
     const [inputMessage, setInputMessage] = useState("");
     const messageContainer = useRef(null);
 
@@ -37,7 +37,7 @@ function Messages({ conversationId, data }: InferGetServerSidePropsType<typeof g
             const res = fetch(`http://localhost:3005/messages/${conversationId}`,
                 {
                     method: "POST",
-                    body: inputMessage
+                    body:  JSON.stringify({ body: inputMessage, timestamp: message.timestamp })
                 });
             setMessages((prev) => [...prev, message]);
             setInputMessage("");
