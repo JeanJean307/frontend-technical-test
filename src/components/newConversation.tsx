@@ -1,21 +1,22 @@
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getLoggedUserId } from '../utils/getLoggedUserId'
 import { User } from '../types/user'
 import Router from 'next/router'
 
 export default function NewConversation({ existingUserId }) {
 
-  const [users, setUsers] = useState<User[]>([])
+  const [users, setUsers] = React.useState<User[]>([])
 
-  useEffect(() => {
-    async function loadUser() {
-      const res = await fetch(`http://localhost:3005/users`)
-      const us: User[] = await res.json()
-      setUsers(us.filter(u => (!existingUserId.includes(u.id) && u.id !== getLoggedUserId())))
-    }
+  React.useEffect(() => {
     loadUser();
   }, []);
+
+  async function loadUser() {
+    const res = await fetch(`http://localhost:3005/users`)
+    const us: User[] = await res.json()
+    setUsers(us.filter(u => (!existingUserId.includes(u.id) && u.id !== getLoggedUserId())))
+  }
 
   async function addConversation(recipientId: Number) {
     const res = await fetch(`http://localhost:3005/conversations/${getLoggedUserId()}`,
@@ -28,7 +29,7 @@ export default function NewConversation({ existingUserId }) {
   }
 
   return (
-    <div className="dropdown">
+    <div data-testid="dropdown-conversation" className="dropdown">
       <button className="btn btn-primary dropdown-toggle w-100" type="button"
         id="dropDownNewDiscussion" data-bs-toggle="dropdown" aria-expanded="false">
         New discussion
