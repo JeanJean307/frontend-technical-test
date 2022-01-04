@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Footer from './footer'
 import Navbar from './navbar'
 import styles from '../styles/Layout.module.css'
+import Script from 'next/script'
 
 export default function Layout({ children }) {
   return (
@@ -20,6 +21,10 @@ export default function Layout({ children }) {
           {children}
         </main>
       </div>
+      <Script
+        src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js'
+        strategy='afterInteractive'
+      />
       <Footer />
     </>
   )

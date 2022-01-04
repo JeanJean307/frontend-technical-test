@@ -1,3 +1,54 @@
+First of all, i really appreciated do this test.
+
+# My Process
+
+- I Forked and cloned repository
+- I used Visual Studio Code to open project
+  - Run and discover the solution
+  - Check how server retrieve data
+- I added first page Conversation
+  - Use server side rendenring(SSR) because we want always fresh data
+  - Do the list of links to access messages
+- I added second page messages/[id]
+  - Display messages for selected conversation
+  - Use SSR
+
+Ok, now i took a step back and i thought how i could improve my UI. I decided to used Bootstrap + Bootstrap Icons and added Layout to navigate more easily.
+
+- I created my Layout component and use it inside _app
+  - I also added two little components Navbar and Footer
+- I linked Bootstrap in Layout from CDN for simplicity
+- I refactored my pages with Boostrap possibilities
+- In messages page, i added input text and used Optimistic Rendering when user send a message
+
+## Bonus 1
+
+I created a component newConversation 
+- Display users in dropdown list
+- Filter users that logged user has already spoken
+
+## Bonus 2
+
+I used _error, 404 and 500 pages to display specific error message.
+ - Only visible in production
+
+## Make the app better
+
+- Accessibility
+  - I checked how my DOM structure are build
+  - I add some attributes aria- and title if missed
+  - Bootstrap give often best practices
+
+- Tests
+  - I added tests for my components and utils method
+
+## Time spend
+
+I worked about 12 hours distributed in this way
+- 5 hours: Conversations and Messages
+- 4 hours: Bonus
+- 3 hours: Tests and Doc
+
 # Context :
 
 At leboncoin, our users can share messages about a transaction, or ask for informations about any products.

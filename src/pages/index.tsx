@@ -1,5 +1,4 @@
 import type { FC } from 'react'
-import Script from 'next/script'
 import Image from 'next/image'
 import Logo from '../assets/lbc-logo.webp'
 import styles from '../styles/Home.module.css'
@@ -47,10 +46,6 @@ const Home: FC = () => {
           <p>We recommend 4 hours for this test. You are free to spend more (or less) time, let us know how much time did you spend.</p>
         </article>
       </div>
-      <Script
-        src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js'
-        strategy='afterInteractive'
-      />
     </>
   )
 }
